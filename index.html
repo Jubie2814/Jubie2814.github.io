@@ -1,411 +1,264 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>個人學習歷程檔案</title>
+    <title>個人學習檔案 PORTFOLIO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'page-bg': '#F4F7FA', // 極淡藍灰背景
+                        'sec-bg': '#E0E7FF',  // 競賽區塊霧藍背景
+                        'bio': '#1D4ED8',    // 生物藍
+                        'chem': '#15803D',   // 化學綠
+                        'phys': '#4338CA',   // 物理靛
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "url('data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d1d5db' fill-opacity='0.12'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2v-4h4v-2H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')", // 抽象幾何圖騰
+                        'dots-pattern': "url('data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23cbd5e1' fill-opacity='0.2' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='1'/%3E%3Ccircle cx='13' cy='13' r='1'/%3E%3C/g%3E%3C/svg%3E')", // 微細圓點網格
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        /* 大地系森林風色彩與字體設定 */
-        :root {
-            --primary-color: #2A5C43; /* 沉穩的墨綠色 */
-            --secondary-color: #6B8E7B; /* 柔和的灰綠色 */
-            --bg-gradient: linear-gradient(135deg, #FAF7F2 0%, #EFE8D8 100%); /* 溫暖柔和的米色背景 */
-            --card-bg: rgba(255, 255, 255, 0.95); /* 微透明卡片底色 */
-            --text-main: #3E3E3E;     /* 深灰色字體 */
-            --text-light: #7A7A7A;
-        }
-
-        body {
-            font-family: 'Quicksand', 'Nunito', '微軟正黑體', sans-serif;
-            background: var(--bg-gradient);
-            background-attachment: fixed;
-            color: var(--text-main);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-
-        /* 自我介紹頭部區塊 */
-        header {
-            text-align: center;
-            padding: 40px 20px 20px;
-        }
-
-        .avatar {
-            width: 120px;
-            height: 120px;
-            background-color: #fff;
-            border: 3px solid var(--primary-color);
-            border-radius: 50%;
-            margin: 0 auto 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-            font-size: 0.9rem;
-            box-shadow: 0 4px 15px rgba(42, 92, 67, 0.15);
-            object-fit: cover;
-            overflow: hidden;
-        }
-
-        .profile-name {
-            font-size: 1.8rem;
-            color: var(--primary-color);
-            margin: 0 0 5px 0;
-            font-weight: bold;
-        }
-
-        .profile-school {
-            font-size: 1.1rem;
-            color: var(--secondary-color);
-            margin: 0;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            background-color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-        }
-
-        /* 主導覽列設計 */
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: linear-gradient(to bottom, rgba(250,247,242,0.95) 60%, rgba(250,247,242,0));
-        }
-
-        nav button {
-            background-color: white;
-            border: 2px solid transparent;
-            font-size: 1.05rem;
-            color: var(--text-main);
-            cursor: pointer;
-            padding: 10px 22px;
-            border-radius: 25px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
-            transition: all 0.3s ease;
-            font-weight: bold;
-        }
-
-        nav button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-        }
-
-        nav button.active {
-            color: white;
-            background-color: var(--primary-color);
-            box-shadow: 0 4px 15px rgba(42, 92, 67, 0.3);
-        }
-
-        /* 頁面內容區塊 */
-        .container {
-            max-width: 900px;
-            margin: 20px auto 60px;
-            padding: 0 20px;
-        }
-
-        .page {
-            display: none;
-            animation: fadeIn 0.4s ease-in-out;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        h2 {
-            color: var(--primary-color);
-            text-align: center;
-            margin-bottom: 25px;
-            font-size: 1.5rem;
-        }
-
-        /* 卡片設計 (做為獨立的頁籤群組) */
-        .card {
-            background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.04);
-            border-top: 4px solid var(--secondary-color);
-            margin-bottom: 25px;
-        }
-
-        .card h3 {
-            color: var(--primary-color);
-            margin-top: 0;
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border-bottom: 1px dashed #DDD;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-        }
-
-        /* 次級分頁選單 (小標) */
-        .sub-nav {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .sub-nav button {
-            background-color: #F4F1EA;
-            border: 1px solid transparent;
-            color: var(--text-main);
-            padding: 6px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.95rem;
-            transition: all 0.2s ease;
-        }
-
-        .sub-nav button:hover {
-            background-color: #E8EBE9;
-            color: var(--primary-color);
-        }
-
-        .sub-nav button.active {
-            background-color: var(--primary-color);
-            color: white;
-            box-shadow: 0 2px 8px rgba(42, 92, 67, 0.2);
-        }
-
-        /* 次級分頁內容區 */
-        .sub-content {
-            display: none;
-            animation: fadeIn 0.3s ease-in-out;
-            background-color: #FAFAF8;
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid #EAE5D9;
-        }
-
-        .sub-content.active {
-            display: block;
-        }
-
-        /* 證書展示區 - 網格系統 */
-        .cert-grid {
-            display: grid;
-            gap: 15px;
-        }
-
-        .cert-slot {
-            background-color: #F4F1EA;
-            height: 160px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-light);
-            border: 1px dashed var(--secondary-color);
-            transition: all 0.2s ease;
-            text-align: center;
-            font-size: 0.95rem;
-            padding: 10px;
-        }
-
-        .cert-slot:hover {
-            background-color: #E8EBE9;
-            border-color: var(--primary-color);
-            color: var(--primary-color);
-        }
-
+        body { font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif; }
+        .nav-link { @apply text-slate-700 hover:text-blue-700 transition-colors duration-300 font-medium relative; }
+        .nav-link::after { content: ''; @apply absolute left-0 bottom-0 w-0 h-0.5 bg-blue-600 transition-all duration-300; }
+        .nav-link:hover::after { @apply w-full; }
+        section { padding-top: 9rem; padding-bottom: 9rem; @apply bg-dots-pattern; } /* 增加背景圓點圖騰 */
+        .card-shadow { box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.04); }
+        .card-hover { @apply transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 hover:border-blue-100; }
     </style>
 </head>
-<body>
+<body class="bg-page-bg text-slate-900">
 
-    <header>
-        <div class="avatar">放入頭像照片</div>
-        <h1 class="profile-name">呂運和</h1>
-        <p class="profile-school">臺北市私立薇閣中學</p>
-    </header>
-
-    <nav>
-        <button class="tab-btn active" onclick="openPage('learning')">📚 課程學習</button>
-        <button class="tab-btn" onclick="openPage('competitions')">🏆 競賽殊榮</button>
-        <button class="tab-btn" onclick="openPage('interests')">⭐ 興趣專長</button>
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 shadow-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-8 h-20 flex items-center justify-between">
+            <div class="text-2xl font-black tracking-tighter text-slate-950 flex items-center">
+                <span class="w-3 h-8 bg-blue-600 rounded-full mr-3"></span>
+                PORTFOLIO
+            </div>
+            <div class="space-x-10 text-lg">
+                <a href="#about" class="nav-link">關於我</a>
+                <a href="#learning" class="nav-link">課程學習</a>
+                <a href="#competitions" class="nav-link">競賽歷程</a>
+                <a href="#interests" class="nav-link">興趣專長</a>
+            </div>
+        </div>
+        <div class="h-0.5 w-full bg-gradient-to-r from-blue-100 via-blue-500 to-blue-100"></div>
     </nav>
 
-    <div class="container">
+    <header id="about" class="bg-white pt-36 pb-28 border-b border-gray-100 relative overflow-hidden bg-hero-pattern">
+        <div class="absolute -top-16 -left-16 w-80 h-80 bg-blue-50 rounded-full opacity-50 blur-3xl"></div>
+        <div class="absolute top-1/2 -right-24 w-64 h-64 bg-emerald-50 rounded-full opacity-60 blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-8 grid md:grid-cols-12 gap-16 items-center relative z-10">
+            <div class="md:col-span-4 flex justify-center">
+                <div class="relative group">
+                    <div class="absolute inset-0 bg-blue-100 rounded-full blur-2xl opacity-70 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="w-72 h-72 rounded-full overflow-hidden shadow-2xl border-4 border-white relative z-10 ring-4 ring-slate-100 transition-transform duration-500 group-hover:scale-105">
+                        <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?&auto=format&fit=crop&w=600&q=80" class="object-cover w-full h-full" alt="個人頭像">
+                    </div>
+                </div>
+            </div>
+            <div class="md:col-span-8 space-y-7">
+                <span class="inline-flex items-center bg-blue-50 text-blue-700 px-5 py-2 rounded-full text-sm font-semibold tracking-wide border border-blue-100">
+                    <span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+                    高中學習檔案
+                </span>
+                <h1 class="text-7xl font-black text-slate-950 tracking-tighter leading-none">王小明 <span class="text-3xl font-light text-slate-400">Wang Xiao-Ming</span></h1>
+                <p class="text-3xl text-slate-800 font-semibold leading-snug tracking-tight">熱衷於探索自然科學的奧秘，兼具邏輯推演與實作能力。</p>
+                <p class="text-xl text-slate-600 leading-relaxed max-w-3xl">
+                    我是呂運和，一位對生物與數理學科充滿好奇的學生。在學習的道路上，我享受在顯微鏡下觀察微觀世界的驚奇，也迷戀於物理公式背後的嚴謹邏輯。除了學術上的追求，我同時也熱愛鋼琴演奏且擔任籃球隊隊長，追求動靜皆宜的全面發展。
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-8">
         
-        <div id="learning" class="page active">
-            <h2>課程學習內容</h2>
+        <section id="learning">
+            <div class="mb-16 text-center">
+                <h2 class="text-6xl font-black text-slate-950 tracking-tighter">課程學習內容</h2>
+                <p class="text-2xl text-slate-600 mt-5 max-w-2xl mx-auto">從基礎理論到實驗室實作，積累紮實的學術根基與探究精神。</p>
+            </div>
             
-            <div class="card tab-group">
-                <h3>🌱 生物科</h3>
-                <div class="sub-nav">
-                    <button class="sub-tab-btn active" onclick="switchSubTab(event, 'bio-specimen')">標本學</button>
-                    <button class="sub-tab-btn" onclick="switchSubTab(event, 'bio-micro')">顯微技術</button>
-                    <button class="sub-tab-btn" onclick="switchSubTab(event, 'bio-inquiry')">探究實作</button>
+            <div class="grid gap-12">
+                <div class="bg-white p-14 rounded-3xl card-shadow border border-gray-100 relative overflow-hidden card-hover">
+                    <div class="absolute top-0 left-0 w-3 h-full bg-bio"></div>
+                    <h3 class="text-4xl font-extrabold mb-10 text-bio flex items-center">
+                        <svg class="w-10 h-10 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.828.414a5.28 5.28 0 01-5.349-.13l-1.375-.917a2 2 0 00-1.664-.235m11.173 1.28l-.532 1.597a3 3 0 01-3.636 1.91l-3.097-.774a3 3 0 01-1.918-3.633l.54-1.618"></path></svg>
+                        生物科
+                    </h3>
+                    <div class="grid md:grid-cols-3 gap-12 text-slate-700 leading-relaxed text-lg">
+                        <div class="bg-slate-50 p-7 rounded-2xl border border-slate-100">
+                            <h4 class="font-bold text-slate-950 mb-3 text-2xl tracking-tight">標本學</h4>
+                            <p>學習動植物標本的製作流程、保存技術，以及如何透過標本進行精細的形態結構觀察與比對。</p>
+                        </div>
+                        <div class="bg-slate-50 p-7 rounded-2xl border border-slate-100">
+                            <h4 class="font-bold text-slate-950 mb-3 text-2xl tracking-tight">顯微技術</h4>
+                            <p>精熟光學顯微鏡的操作，掌握組織切片、細胞染色技術，探索細胞與微小生物的奧秘。</p>
+                        </div>
+                        <div class="bg-slate-50 p-7 rounded-2xl border border-slate-100">
+                            <h4 class="font-bold text-slate-950 mb-3 text-2xl tracking-tight">探究與實作</h4>
+                            <p>針對特定生物學議題提出假設，自主設計實驗方案、進行數據統計與分析，並撰寫結構完整的實驗報告。</p>
+                        </div>
+                    </div>
                 </div>
-                
-                <div id="bio-specimen" class="sub-content active">
-                    <p>【標本學】透過觀察與製作生物標本，深入了解物種的形態特徵。</p>
-                </div>
-                <div id="bio-micro" class="sub-content">
-                    <p>【顯微技術】學習熟練使用顯微鏡，觀察細胞構造與微觀世界的生命現象。</p>
-                </div>
-                <div id="bio-inquiry" class="sub-content">
-                    <p>【探究實作】自行設計實驗步驟、收集數據並分析結果，培養解決問題的科學素養。</p>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="bg-white p-14 rounded-3xl card-shadow border border-gray-100 relative overflow-hidden card-hover">
+                        <div class="absolute top-0 left-0 w-3 h-full bg-chem"></div>
+                        <h3 class="text-4xl font-extrabold mb-8 text-chem flex items-center">
+                            <svg class="w-9 h-9 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.828.414a5.28 5.28 0 01-5.349-.13l-1.375-.917a2 2 0 00-1.664-.235m11.173 1.28l-.532 1.597a3 3 0 01-3.636 1.91l-3.097-.774a3 3 0 01-1.918-3.633l.54-1.618"></path></svg>
+                            化學科
+                        </h3>
+                        <h4 class="font-bold text-slate-950 mb-3 text-2xl tracking-tight">探究與實作</h4>
+                        <p class="text-slate-700 text-lg leading-relaxed">實驗室中的物質分析、化學反應速率控制，學習運用標準分析儀器進行定性與定量研究，深化對物質變化的理解。</p>
+                    </div>
+                    <div class="bg-white p-14 rounded-3xl card-shadow border border-gray-100 relative overflow-hidden card-hover">
+                        <div class="absolute top-0 left-0 w-3 h-full bg-phys"></div>
+                        <h3 class="text-4xl font-extrabold mb-8 text-phys flex items-center">
+                            <svg class="w-9 h-9 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            物理科
+                        </h3>
+                        <h4 class="font-bold text-slate-950 mb-3 text-2xl tracking-tight">探究與實作</h4>
+                        <p class="text-slate-700 text-lg leading-relaxed">運用物理模型與數學工具，探討力學、電磁學及光學現象，重視物理意義的詮釋與實驗誤差分析，培養嚴謹的科學態度。</p>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="card tab-group">
-                <h3>🧪 化學科</h3>
-                <div class="sub-nav">
-                    <button class="sub-tab-btn active" onclick="switchSubTab(event, 'chem-inquiry')">探究實作</button>
-                </div>
-                <div id="chem-inquiry" class="sub-content active">
-                    <p>【探究實作】藉由化學實驗驗證假說，培養嚴謹的邏輯推演與數據分析能力。</p>
-                </div>
+    </main>
+
+    <section id="competitions" class="bg-sec-bg relative overflow-hidden border-y border-gray-200">
+        <div class="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiM0MzM4Y2EiIGZpbGwtb3BhY2l0eT0iMC4xMiI+PHBhdGggZD0iTTM2IDM0di00aC0ydjRoLTR2MmgsNHY0aDJ2LTRoNHYtMmgtNHptMC0zMFYwaC0ydjRoLTR2MmgsNHY0aDJ2LTRoNHYtMmgtNHpNNiAzNHYtNEg0djRoSDB2Mmg0djRoMnYtNGg0di0ySDZ6TTYgNFYwSDR2NEgwdjJoNHY0aDJ2LTRhNHYtMkg2eiIvPjwvZz48L2c+PC9zdmc+')]"></div>
+
+        <div class="max-w-7xl mx-auto px-8 relative z-10">
+            <div class="mb-16 text-center">
+                <h2 class="text-6xl font-black text-slate-950 tracking-tighter">競賽歷程與榮譽</h2>
+                <p class="text-2xl text-slate-600 mt-5 mx-auto max-w-2xl">在學科領域挑戰自我，透過專業競賽檢驗知識深度與邏輯思維。</p>
             </div>
-
-            <div class="card tab-group">
-                <h3>⚡ 物理科</h3>
-                <div class="sub-nav">
-                    <button class="sub-tab-btn active" onclick="switchSubTab(event, 'phy-inquiry')">探究實作</button>
-                </div>
-                <div id="phy-inquiry" class="sub-content active">
-                    <p>【探究實作】探索自然界的物理規律，將抽象公式轉化為具體的實驗操作與驗證。</p>
-                </div>
-            </div>
-        </div>
-
-        <div id="competitions" class="page">
-            <h2>競賽證書展示區</h2>
             
-            <div class="card tab-group">
-                <h3>🌱 生物</h3>
-                <div id="comp-bio-cert" class="sub-content active">
-                    <p>參與生物相關競賽之證明與獎狀。</p>
-                    <div class="cert-grid" style="grid-template-columns: repeat(3, 1fr); margin-top: 15px;">
-                        <div class="cert-slot">生物證書展示區 1</div>
-                        <div class="cert-slot">生物證書展示區 2</div>
-                        <div class="cert-slot">生物證書展示區 3</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12">
+                <div class="overflow-hidden rounded-3xl shadow-xl aspect-video relative group bg-white p-2.5 border border-gray-100">
+                    <img src="https://images.unsplash.com/photo-1532187878418-971c68209bb4?auto=format&fit=crop&w=1000" class="object-cover w-full h-full rounded-2xl transition-transform duration-700 group-hover:scale-110" alt="生物競賽">
+                    <div class="absolute bottom-7 left-7 right-7 p-7 text-white bg-black/70 backdrop-blur-lg rounded-2xl shadow-inner">
+                        <p class="text-sm font-semibold tracking-widest text-blue-300">BIOLOGY</p>
+                        <h3 class="text-3xl font-bold mt-1.5 tracking-tight">生物奧林匹亞初試</h3>
+                        <p class="mt-2.5 text-xl text-gray-100">特優錄取</p>
                     </div>
                 </div>
-            </div>
 
-            <div class="card tab-group">
-                <h3>🧪 化學</h3>
-                <div id="comp-chem-cert" class="sub-content active">
-                    <p>參與化學相關競賽之證明與獎狀。</p>
-                    <div class="cert-grid" style="grid-template-columns: repeat(3, 1fr); margin-top: 15px;">
-                        <div class="cert-slot">化學證書展示區 1</div>
-                        <div class="cert-slot">化學證書展示區 2</div>
-                        <div class="cert-slot">化學證書展示區 3</div>
+                <div class="overflow-hidden rounded-3xl shadow-xl aspect-video relative group bg-white p-2.5 border border-gray-100">
+                    <img src="https://images.unsplash.com/photo-1574170623275-38820f699971?auto=format&fit=crop&w=1000" class="object-cover w-full h-full rounded-2xl transition-transform duration-700 group-hover:scale-110" alt="化學競賽">
+                    <div class="absolute bottom-7 left-7 right-7 p-7 text-white bg-black/70 backdrop-blur-lg rounded-2xl shadow-inner">
+                        <p class="text-sm font-semibold tracking-widest text-emerald-300">CHEMISTRY</p>
+                        <h3 class="text-3xl font-bold mt-1.5 tracking-tight">化學奧林匹亞初選</h3>
+                        <p class="mt-2.5 text-xl text-gray-100">銀獎</p>
                     </div>
                 </div>
-            </div>
 
-            <div class="card tab-group">
-                <h3>📐 數學</h3>
-                <div id="comp-math-cert" class="sub-content active">
-                    <p>參與數學相關競賽之證明與獎狀。</p>
-                    <div class="cert-grid" style="grid-template-columns: repeat(4, 1fr); margin-top: 15px;">
-                        <div class="cert-slot">數學證書展示區 1</div>
-                        <div class="cert-slot">數學證書展示區 2</div>
-                        <div class="cert-slot">數學證書展示區 3</div>
-                        <div class="cert-slot">數學證書展示區 4</div>
+                <div class="md:col-span-2 grid md:grid-cols-2 gap-12 pt-4">
+                    <div class="overflow-hidden rounded-3xl shadow-xl aspect-video relative group bg-white p-2.5 border border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1509228468518-180dd482195b?auto=format&fit=crop&w=1000" class="object-cover w-full h-full rounded-2xl transition-transform duration-700 group-hover:scale-110" alt="數學競賽 1">
+                        <div class="absolute bottom-7 left-7 right-7 p-7 text-white bg-black/70 backdrop-blur-lg rounded-2xl shadow-inner">
+                            <p class="text-sm font-semibold tracking-widest text-amber-300">MATHEMATICS</p>
+                            <h3 class="text-3xl font-bold mt-1.5 tracking-tight">AMC 12</h3>
+                            <p class="mt-2.5 text-xl text-gray-100">Achievement: Excellent</p>
+                        </div>
+                    </div>
+                    <div class="overflow-hidden rounded-3xl shadow-xl aspect-video relative group bg-white p-2.5 border border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1000" class="object-cover w-full h-full rounded-2xl transition-transform duration-700 group-hover:scale-110" alt="數學競賽 2">
+                        <div class="absolute bottom-7 left-7 right-7 p-7 text-white bg-black/70 backdrop-blur-lg rounded-2xl shadow-inner">
+                            <p class="text-sm font-semibold tracking-widest text-amber-300">MATHEMATICS</p>
+                            <h3 class="text-3xl font-bold mt-1.5 tracking-tight">AIME 美國數學邀請賽</h3>
+                            <p class="mt-2.5 text-xl text-gray-100">獲邀參賽</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="card tab-group">
-                <h3>⚡ 物理</h3>
-                <div id="comp-phy-cert" class="sub-content active">
-                    <p>參與物理相關競賽之證明與獎狀。</p>
-                    <div class="cert-grid" style="grid-template-columns: repeat(1, 1fr); max-width: 300px; margin-top: 15px;">
-                        <div class="cert-slot">物理證書展示區 1</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="interests" class="page">
-            <h2>個人興趣與專長</h2>
-            
-            <div class="card tab-group">
-                <h3>🎹 鋼琴</h3>
-                <div class="sub-nav">
-                    <button class="sub-tab-btn active" onclick="switchSubTab(event, 'piano-cert')">相關證書</button>
-                </div>
-                <div id="piano-cert" class="sub-content active">
-                    <p>透過音樂陶冶性情，培養耐心與專注力。</p>
-                    <div class="cert-grid" style="grid-template-columns: repeat(2, 1fr); margin-top: 15px;">
-                        <div class="cert-slot">鋼琴檢定證書</div>
-                        <div class="cert-slot">展演紀錄照片</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card tab-group">
-                <h3>🏀 籃球</h3>
-                <div class="sub-nav">
-                    <button class="sub-tab-btn active" onclick="switchSubTab(event, 'basketball-club')">社團參與</button>
-                    <button class="sub-tab-btn" onclick="switchSubTab(event, 'basketball-match')">比賽紀錄與花絮</button>
-                </div>
-                
-                <div id="basketball-club" class="sub-content active">
-                    <p>熱愛團隊運動，在社團活動中學習溝通協調與團隊合作精神。</p>
-                    <div class="cert-grid" style="grid-template-columns: repeat(2, 1fr); margin-top: 15px;">
-                        <div class="cert-slot">社團活動照片 1</div>
-                        <div class="cert-slot">社團活動照片 2</div>
-                    </div>
-                </div>
-                <div id="basketball-match" class="sub-content">
-                    <p>在球場上展現拼搏精神，記錄下每一場賽事的精彩瞬間。</p>
-                    <div class="cert-grid" style="grid-template-columns: repeat(2, 1fr); margin-top: 15px;">
-                        <div class="cert-slot">比賽紀錄照 1</div>
-                        <div class="cert-slot">比賽紀錄照 2</div>
+                <div class="overflow-hidden rounded-3xl shadow-xl aspect-video relative group bg-white p-2.5 border border-gray-100 md:col-span-2 lg:col-span-1 lg:col-start-1 lg:col-end-2">
+                    <img src="https://images.unsplash.com/photo-1632833239869-a37e3a5806d2?auto=format&fit=crop&w=1000" class="object-cover w-full h-full rounded-2xl transition-transform duration-700 group-hover:scale-110" alt="物理競賽">
+                    <div class="absolute bottom-7 left-7 right-7 p-7 text-white bg-black/70 backdrop-blur-lg rounded-2xl shadow-inner">
+                        <p class="text-sm font-semibold tracking-widest text-indigo-300">PHYSICS</p>
+                        <h3 class="text-3xl font-bold mt-1.5 tracking-tight">APX 物理中級</h3>
+                        <p class="mt-2.5 text-xl text-gray-100">前 5%</p>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-    </div>
+    <main class="max-w-7xl mx-auto px-8 relative z-10">
+        
+        <section id="interests">
+            <div class="mb-16 text-center">
+                <h2 class="text-6xl font-black text-slate-950 tracking-tighter">個人興趣與專長</h2>
+                <p class="text-2xl text-slate-600 mt-5 mx-auto max-w-2xl">學術之外，音樂與運動豐富了我的學習生活，進一步培養我的專注力與團隊合作。</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                <div class="lg:col-span-5 bg-white p-12 rounded-3xl card-shadow border border-gray-100 space-y-7 card-hover">
+                    <h3 class="text-3xl font-extrabold text-slate-950 flex items-center">
+                        <svg class="w-9 h-9 mr-3 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg>
+                        鋼琴演奏
+                    </h3>
+                    <p class="text-xl text-slate-700 leading-relaxed bg-slate-50 p-6 rounded-2xl border border-slate-100">音樂是我心靈的棲地。透過十幾年的鋼琴學習，我於無數次反覆練習中磨練細節的極致追求，並學會如何在專注中釋放情感，提升了藝術涵養與毅力。</p>
+                    <div class="rounded-2xl overflow-hidden aspect-[4/3] bg-gray-100 shadow-md ring-4 ring-gray-50 transition-transform duration-500 hover:scale-105">
+                        <img src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?auto=format&fit=crop&w=800" class="object-cover w-full h-full" alt="鋼琴">
+                    </div>
+                </div>
+                <div class="lg:col-span-7 bg-white p-12 rounded-3xl card-shadow border border-gray-100 space-y-7 card-hover">
+                    <h3 class="text-3xl font-extrabold text-slate-950 flex items-center justify-end">
+                        <svg class="w-9 h-9 mr-3 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 002 2h1.5A2.5 2.5 0 0019 9.5V8a2 2 0 00-2-2h-1a2 2 0 01-2-2v-.935M12 21a9 9 0 110-18 9 9 0 010 18z"></path></svg>
+                        籃球比賽
+                    </h3>
+                    <p class="text-xl text-slate-700 leading-relaxed text-right bg-slate-50 p-6 rounded-2xl border border-slate-100 transition-all hover:border-orange-100 hover:bg-orange-50">場上的戰術跑位、瞬息萬變的決策，以及與隊友間的默契配合。籃球教會我如何在高壓下保持冷靜，並深刻體會到「團隊合作力量大」的真諦，鍛鍊出強健體魄與領導潛質。</p>
+                    <div class="grid md:grid-cols-2 gap-7 pt-4">
+                        <div class="rounded-2xl overflow-hidden aspect-video bg-gray-100 shadow-md ring-4 ring-gray-50 transition-transform duration-500 hover:scale-105">
+                            <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=800" class="object-cover w-full h-full" alt="籃球比賽 1">
+                        </div>
+                        <div class="rounded-2xl overflow-hidden aspect-video bg-gray-100 shadow-md ring-4 ring-gray-50 transition-transform duration-500 hover:scale-105">
+                            <img src="https://images.unsplash.com/photo-1519861531153-f351f0a4821a?auto=format&fit=crop&w=800" class="object-cover w-full h-full" alt="籃球比賽 2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-16 mt-16 bg-white border-t border-gray-100 bg-hero-pattern relative overflow-hidden">
+        <div class="absolute inset-0 bg-blue-50 opacity-30 blur-3xl"></div>
+        <div class="max-w-7xl mx-auto px-8 text-center text-slate-600 relative z-10">
+            <p class="text-2xl font-black text-slate-950 tracking-tight flex items-center justify-center">
+                 <span class="w-2.5 h-6 bg-blue-600 rounded-full mr-2.5"></span>
+                 呂運和的個人學習檔案
+            </p>
+            <p class="mt-4 text-lg font-medium">&copy; 2026 Wang Xiao-Ming. All Rights Reserved.</p>
+            <p class="text-sm mt-1 opacity-70">Design with Tailwind CSS & Fine Articulation</p>
+        </div>
+    </footer>
 
     <script>
-        // 切換上方三大分頁 (課程學習 / 競賽殊榮 / 興趣專長)
-        function openPage(pageId) {
-            let pages = document.querySelectorAll('.page');
-            pages.forEach(page => page.classList.remove('active'));
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                const navHeight = 80; // 導覽列高度
+                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
 
-            let btns = document.querySelectorAll('.tab-btn');
-            btns.forEach(btn => btn.classList.remove('active'));
-
-            document.getElementById(pageId).classList.add('active');
-            event.currentTarget.classList.add('active');
-        }
-
-        // 切換各個卡片內部的次級分頁 (如：標本學、顯微技術、社團參與等)
-        function switchSubTab(event, targetId) {
-            let group = event.currentTarget.closest('.tab-group');
-            
-            let contents = group.querySelectorAll('.sub-content');
-            contents.forEach(c => c.classList.remove('active'));
-
-            let btns = group.querySelectorAll('.sub-tab-btn');
-            btns.forEach(b => b.classList.remove('active'));
-
-            group.querySelector('#' + targetId).classList.add('active');
-            event.currentTarget.classList.add('active');
-        }
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            });
+        });
     </script>
 
 </body>
