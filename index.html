@@ -17,8 +17,12 @@
                         'phys': '#4338CA',   // 物理靛
                     },
                     backgroundImage: {
-                        'hero-pattern': "url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23d1d5db\' fill-opacity=\'0.12\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2v-4h4v-2H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')", // 抽象幾何圖騰
-                        'dots-pattern': "url('data:image/svg+xml,%3Csvg width=\'20\' height=\'20\' viewBox=\'0 0 20 20\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%23cbd5e1\' fill-opacity=\'0.2\' fill-rule=\'evenodd\'%3E%3Ccircle cx=\'3\' cy=\'3\' r=\'1\'/%3E%3Ccircle cx=\'13\' cy=\'13\' r=\'1\'/%3E%3C/g%3E%3C/svg%3E')", // 微細圓點網格
+                        'hero-pattern': "url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23d1d5db\' fill-opacity=\'0.12\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2v-4h4v-2H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')",
+                        'dots-pattern': "url('data:image/svg+xml,%3Csvg width=\'20\' height=\'20\' viewBox=\'0 0 20 20\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%23cbd5e1\' fill-opacity=\'0.2\' fill-rule=\'evenodd\'%3E%3Ccircle cx=\'3\' cy=\'3\' r=\'1\'/%3E%3Ccircle cx=\'13\' cy=\'13\' r=\'1\'/%3E%3C/g%3E%3C/svg%3E')",
+                    },
+                    aspectRatio: {
+                        // 設定籃球照片要求的 4024:2048 比例
+                        'basketball': '4024 / 2048',
                     }
                 }
             }
@@ -33,7 +37,7 @@
         .card-shadow { box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.04); }
         .card-hover { @apply transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 hover:border-blue-100; }
         
-        /* 燈箱動畫樣式 */
+        /* 燈箱控制樣式 */
         #imageModal {
             transition: opacity 0.3s ease-in-out;
             display: none;
@@ -46,6 +50,7 @@
 </head>
 <body class="bg-page-bg text-slate-900">
 
+    <!-- 導覽列 -->
     <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 shadow-sm border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-8 h-20 flex items-center justify-between">
             <div class="text-2xl font-black tracking-tighter text-slate-950 flex items-center">
@@ -62,6 +67,7 @@
         <div class="h-0.5 w-full bg-gradient-to-r from-blue-100 via-blue-500 to-blue-100"></div>
     </nav>
 
+    <!-- 個人介紹頁首 -->
     <header id="about" class="bg-white pt-36 pb-28 border-b border-gray-100 relative overflow-hidden bg-hero-pattern">
         <div class="absolute -top-16 -left-16 w-80 h-80 bg-blue-50 rounded-full opacity-50 blur-3xl"></div>
         <div class="absolute top-1/2 -right-24 w-64 h-64 bg-emerald-50 rounded-full opacity-60 blur-3xl"></div>
@@ -91,6 +97,7 @@
 
     <main class="max-w-7xl mx-auto px-8">
         
+        <!-- 課程學習區塊 -->
         <section id="learning">
             <div class="mb-16 text-center">
                 <h2 class="text-6xl font-black text-slate-950 tracking-tighter">課程學習內容</h2>
@@ -98,6 +105,7 @@
             </div>
             
             <div class="grid gap-12">
+                <!-- 生物科 -->
                 <div class="bg-white p-14 rounded-3xl card-shadow border border-gray-100 relative overflow-hidden card-hover">
                     <div class="absolute top-0 left-0 w-3 h-full bg-bio"></div>
                     <h3 class="text-4xl font-extrabold mb-10 text-bio flex items-center">
@@ -121,6 +129,7 @@
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-12">
+                    <!-- 化學科 -->
                     <div class="bg-white p-14 rounded-3xl card-shadow border border-gray-100 relative overflow-hidden card-hover">
                         <div class="absolute top-0 left-0 w-3 h-full bg-chem"></div>
                         <h3 class="text-4xl font-extrabold mb-8 text-chem flex items-center">
@@ -130,6 +139,7 @@
                         <h4 class="font-bold text-slate-950 mb-3 text-2xl tracking-tight">探究與實作</h4>
                         <p class="text-slate-700 text-lg leading-relaxed">實驗室中的物質分析、化學反應速率控制，學習運用標準分析儀器進行定性與定量研究，深化對物質變化的理解。</p>
                     </div>
+                    <!-- 物理科 -->
                     <div class="bg-white p-14 rounded-3xl card-shadow border border-gray-100 relative overflow-hidden card-hover">
                         <div class="absolute top-0 left-0 w-3 h-full bg-phys"></div>
                         <h3 class="text-4xl font-extrabold mb-8 text-phys flex items-center">
@@ -145,6 +155,7 @@
 
     </main>
 
+    <!-- 競賽歷程區塊 -->
     <section id="competitions" class="bg-sec-bg relative overflow-hidden border-y border-gray-200">
         <div class="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiM0MzM4Y2EiIGZpbGwtb3BhY2l0eT0iMC4xMiI+PHBhdGggZD0iTTM2IDM0di00aC0ydjRoLTR2MmgsNHY0aDJ2LTRoNHYtMmgtNHptMC0zMFYwaC0ydjRoLTR2MmgsNHY0aDJ2LTRoNHYtMmgtNHpNNiAzNHYtNEg0djRoSDB2Mmg0djRoMnYtNGg0di0ySDZ6TTYgNFYwSDR2NEgwdjJoNHY0aDJ2LTRhNHYtMkg2eiIvPjwvZz48L2c+PC9zdmc+')]"></div>
 
@@ -157,7 +168,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12">
                 <!-- 競賽項目 1 -->
                 <div class="overflow-hidden rounded-3xl shadow-xl aspect-video relative group bg-white p-2.5 border border-gray-100 cursor-pointer" onclick="openModal('生奧.jpg')">
-                    <img src="生奧.jpg" alt="生物競賽" class="w-full h-full object-cover rounded-2xl transition-transform duration-700 group-hover:scale-110">
+                    <img src="生奧.jpg" alt="生物奧林匹亞" class="w-full h-full object-cover rounded-2xl transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute bottom-7 left-7 right-7 p-7 text-white bg-black/70 backdrop-blur-lg rounded-2xl shadow-inner">
                         <p class="text-sm font-semibold tracking-widest text-blue-300">BIOLOGY</p>
                         <h3 class="text-3xl font-bold mt-1.5 tracking-tight">生物奧林匹亞初試</h3>
@@ -167,7 +178,7 @@
 
                 <!-- 競賽項目 2 -->
                 <div class="overflow-hidden rounded-3xl shadow-xl aspect-video relative group bg-white p-2.5 border border-gray-100 cursor-pointer" onclick="openModal('化奧.jpg')">
-                    <img src="化奧.jpg" alt="化學競賽" class="w-full h-full object-cover rounded-2xl transition-transform duration-700 group-hover:scale-110">
+                    <img src="化奧.jpg" alt="化學奧林匹亞" class="w-full h-full object-cover rounded-2xl transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute bottom-7 left-7 right-7 p-7 text-white bg-black/70 backdrop-blur-lg rounded-2xl shadow-inner">
                         <p class="text-sm font-semibold tracking-widest text-emerald-300">CHEMISTRY</p>
                         <h3 class="text-3xl font-bold mt-1.5 tracking-tight">化學奧林匹亞初選</h3>
@@ -178,7 +189,7 @@
                 <div class="md:col-span-2 grid md:grid-cols-2 gap-12 pt-4">
                     <!-- 競賽項目 3 -->
                     <div class="overflow-hidden rounded-3xl shadow-xl aspect-video relative group bg-white p-2.5 border border-gray-100 cursor-pointer" onclick="openModal('excellent.jpg')">
-                        <img src="excellent.jpg" alt="數學競賽 1" class="w-full h-full object-cover rounded-2xl transition-transform duration-700 group-hover:scale-110">
+                        <img src="excellent.jpg" alt="AMC 12" class="w-full h-full object-cover rounded-2xl transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute bottom-7 left-7 right-7 p-7 text-white bg-black/70 backdrop-blur-lg rounded-2xl shadow-inner">
                             <p class="text-sm font-semibold tracking-widest text-amber-300">MATHEMATICS</p>
                             <h3 class="text-3xl font-bold mt-1.5 tracking-tight">AMC 12</h3>
@@ -187,7 +198,7 @@
                     </div>
                     <!-- 競賽項目 4 -->
                     <div class="overflow-hidden rounded-3xl shadow-xl aspect-video relative group bg-white p-2.5 border border-gray-100 cursor-pointer" onclick="openModal('aime.jpeg')">
-                        <img src="aime.jpeg" alt="數學競賽 2" class="w-full h-full object-cover rounded-2xl transition-transform duration-700 group-hover:scale-110">
+                        <img src="aime.jpeg" alt="AIME" class="w-full h-full object-cover rounded-2xl transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute bottom-7 left-7 right-7 p-7 text-white bg-black/70 backdrop-blur-lg rounded-2xl shadow-inner">
                             <p class="text-sm font-semibold tracking-widest text-amber-300">MATHEMATICS</p>
                             <h3 class="text-3xl font-bold mt-1.5 tracking-tight">AIME 美國數學邀請賽</h3>
@@ -198,7 +209,7 @@
 
                 <!-- 競賽項目 5 -->
                 <div class="overflow-hidden rounded-3xl shadow-xl aspect-video relative group bg-white p-2.5 border border-gray-100 md:col-span-2 lg:col-span-1 lg:col-start-1 lg:col-end-2 cursor-pointer" onclick="openModal('apx 物理中高級前5%.jpg')">
-                    <img src="apx 物理中高級前5%.jpg" class="object-cover w-full h-full rounded-2xl transition-transform duration-700 group-hover:scale-110" alt="物理競賽">
+                    <img src="apx 物理中高級前5%.jpg" class="object-cover w-full h-full rounded-2xl transition-transform duration-700 group-hover:scale-110" alt="APX 物理">
                     <div class="absolute bottom-7 left-7 right-7 p-7 text-white bg-black/70 backdrop-blur-lg rounded-2xl shadow-inner">
                         <p class="text-sm font-semibold tracking-widest text-indigo-300">PHYSICS</p>
                         <h3 class="text-3xl font-bold mt-1.5 tracking-tight">APX 物理中級</h3>
@@ -211,6 +222,7 @@
 
     <main class="max-w-7xl mx-auto px-8 relative z-10">
         
+        <!-- 興趣與專長區塊 -->
         <section id="interests">
             <div class="mb-16 text-center">
                 <h2 class="text-6xl font-black text-slate-950 tracking-tighter">個人興趣與專長</h2>
@@ -218,6 +230,7 @@
             </div>
             
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                <!-- 鋼琴 -->
                 <div class="lg:col-span-5 bg-white p-12 rounded-3xl card-shadow border border-gray-100 space-y-7 card-hover">
                     <h3 class="text-3xl font-extrabold text-slate-950 flex items-center">
                         <svg class="w-9 h-9 mr-3 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg>
@@ -228,6 +241,8 @@
                         <img src="鋼琴檢定.png" class="object-cover w-full h-full" alt="鋼琴">
                     </div>
                 </div>
+
+                <!-- 籃球 (固定比例) -->
                 <div class="lg:col-span-7 bg-white p-12 rounded-3xl card-shadow border border-gray-100 space-y-7 card-hover">
                     <h3 class="text-3xl font-extrabold text-slate-950 flex items-center justify-end">
                         <svg class="w-9 h-9 mr-3 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 002 2h1.5A2.5 2.5 0 0019 9.5V8a2 2 0 00-2-2h-1a2 2 0 01-2-2v-.935M12 21a9 9 0 110-18 9 9 0 010 18z"></path></svg>
@@ -235,11 +250,11 @@
                     </h3>
                     <p class="text-xl text-slate-700 leading-relaxed text-right bg-slate-50 p-6 rounded-2xl border border-slate-100 transition-all hover:border-orange-100 hover:bg-orange-50">場上的戰術跑位、瞬息萬變的決策，以及與隊友間的默契配合。籃球教會我如何在高壓下保持冷靜，並深刻體會到「團隊合作力量大」的真諦，鍛鍊出強健體魄與領導潛質。</p>
                     <div class="grid md:grid-cols-2 gap-7 pt-4">
-                        <div class="rounded-2xl overflow-hidden aspect-video bg-gray-100 shadow-md ring-4 ring-gray-50 transition-transform duration-500 hover:scale-105">
-                            <img src="籃球(2).JPEG" alt="籃球比賽 1">
+                        <div class="rounded-2xl overflow-hidden aspect-basketball bg-gray-100 shadow-md ring-4 ring-gray-50 transition-transform duration-500 hover:scale-105">
+                            <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=4024&h=2048" class="object-cover w-full h-full" alt="籃球比賽 1">
                         </div>
-                        <div class="rounded-2xl overflow-hidden aspect-video bg-gray-100 shadow-md ring-4 ring-gray-50 transition-transform duration-500 hover:scale-105">
-                            <img src="籃球(1).JPEG" alt="籃球比賽 2">
+                        <div class="rounded-2xl overflow-hidden aspect-basketball bg-gray-100 shadow-md ring-4 ring-gray-50 transition-transform duration-500 hover:scale-105">
+                            <img src="https://images.unsplash.com/photo-1519861531153-f351f0a4821a?auto=format&fit=crop&w=4024&h=2048" class="object-cover w-full h-full" alt="籃球比賽 2">
                         </div>
                     </div>
                 </div>
@@ -248,6 +263,7 @@
 
     </main>
 
+    <!-- 頁尾 -->
     <footer class="py-16 mt-16 bg-white border-t border-gray-100 bg-hero-pattern relative overflow-hidden">
         <div class="absolute inset-0 bg-blue-50 opacity-30 blur-3xl"></div>
         <div class="max-w-7xl mx-auto px-8 text-center text-slate-600 relative z-10">
@@ -255,7 +271,7 @@
                  <span class="w-2.5 h-6 bg-blue-600 rounded-full mr-2.5"></span>
                  呂運和的個人學習檔案
             </p>
-            <p class="mt-4 text-lg font-medium">&copy; 2026 Wang Xiao-Ming. All Rights Reserved.</p>
+            <p class="mt-4 text-lg font-medium">&copy; 2026 呂運和. All Rights Reserved.</p>
             <p class="text-sm mt-1 opacity-70">Design with Tailwind CSS & Fine Articulation</p>
         </div>
     </footer>
@@ -268,7 +284,7 @@
             </svg>
         </button>
         <div class="max-w-5xl max-h-[90vh] relative" onclick="event.stopPropagation()">
-            <img id="modalImage" src="" class="max-w-full max-h-[90vh] rounded-lg shadow-2xl border-4 border-white/10" alt="Full view">
+            <img id="modalImage" src="" class="max-w-full max-h-[90vh] rounded-lg shadow-2xl border-4 border-white/10" alt="全螢幕瀏覽">
         </div>
         <div class="absolute bottom-8 text-white/50 text-sm font-medium tracking-widest">點擊背景即可關閉</div>
     </div>
