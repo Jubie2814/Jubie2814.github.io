@@ -21,8 +21,8 @@
                         'dots-pattern': "url('data:image/svg+xml,%3Csvg width=\'20\' height=\'20\' viewBox=\'0 0 20 20\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%23cbd5e1\' fill-opacity=\'0.2\' fill-rule=\'evenodd\'%3E%3Ccircle cx=\'3\' cy=\'3\' r=\'1\'/%3E%3Ccircle cx=\'13\' cy=\'13\' r=\'1\'/%3E%3C/g%3E%3C/svg%3E')",
                     },
                     aspectRatio: {
-                        // 設定籃球照片要求的 4024:2048 比例
-                        'basketball': '4024 / 2048',
+                        // 設定籃球照片要求的 4024(橫) * 6048(直) 比例
+                        'basketball': '4024 / 6048',
                     }
                 }
             }
@@ -67,7 +67,7 @@
         <div class="h-0.5 w-full bg-gradient-to-r from-blue-100 via-blue-500 to-blue-100"></div>
     </nav>
 
-    <!-- 個人介紹頁首 -->
+    <!-- 個人簡介區塊 -->
     <header id="about" class="bg-white pt-36 pb-28 border-b border-gray-100 relative overflow-hidden bg-hero-pattern">
         <div class="absolute -top-16 -left-16 w-80 h-80 bg-blue-50 rounded-full opacity-50 blur-3xl"></div>
         <div class="absolute top-1/2 -right-24 w-64 h-64 bg-emerald-50 rounded-full opacity-60 blur-3xl"></div>
@@ -105,7 +105,7 @@
             </div>
             
             <div class="grid gap-12">
-                <!-- 生物科 -->
+                <!-- 生物科區塊 -->
                 <div class="bg-white p-14 rounded-3xl card-shadow border border-gray-100 relative overflow-hidden card-hover">
                     <div class="absolute top-0 left-0 w-3 h-full bg-bio"></div>
                     <h3 class="text-4xl font-extrabold mb-10 text-bio flex items-center">
@@ -114,40 +114,40 @@
                     </h3>
                     <div class="grid md:grid-cols-3 gap-12 text-slate-700 leading-relaxed text-lg">
                         <!-- 標本學 -->
-                        <div class="bg-slate-50 p-7 rounded-2xl border border-slate-100 flex flex-col justify-between">
+                        <div class="bg-slate-50 p-7 rounded-2xl border border-slate-100 flex flex-col justify-between h-full">
                             <div>
                                 <h4 class="font-bold text-slate-950 mb-3 text-2xl tracking-tight">標本學</h4>
                                 <p>學習動植物標本的製作流程、保存技術，以及如何透過標本進行精細的形態結構觀察與比對。</p>
                             </div>
-                            <div class="mt-6 rounded-xl overflow-hidden aspect-video bg-gray-200 shadow-sm cursor-pointer group" onclick="openModal('https://images.unsplash.com/photo-1516331138075-f3ad16748f1d?auto=format&fit=crop&w=800')">
-                                <img src="標本學.jpg" alt="標本學示意圖" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="mt-6 rounded-xl overflow-hidden aspect-video bg-gray-200 shadow-sm cursor-pointer group" onclick="openModal('https://images.unsplash.com/photo-1516331138075-f3ad16748f1d?auto=format&fit=crop&w=1200')">
+                                <img src="標本學.jpg" alt="[標本照片]" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                             </div>
                         </div>
                         <!-- 顯微技術 -->
-                        <div class="bg-slate-50 p-7 rounded-2xl border border-slate-100 flex flex-col justify-between">
+                        <div class="bg-slate-50 p-7 rounded-2xl border border-slate-100 flex flex-col justify-between h-full">
                             <div>
                                 <h4 class="font-bold text-slate-950 mb-3 text-2xl tracking-tight">顯微技術</h4>
                                 <p>精熟光學顯微鏡的操作，掌握組織切片、細胞染色技術，探索細胞與微小生物的奧秘。</p>
                             </div>
-                            <div class="mt-6 rounded-xl overflow-hidden aspect-video bg-gray-200 shadow-sm cursor-pointer group" onclick="openModal('https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=800')">
-                                <img src="顯微技術.jpeg" alt="顯微技術示意圖" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="mt-6 rounded-xl overflow-hidden aspect-video bg-gray-200 shadow-sm cursor-pointer group" onclick="openModal('https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=1200')">
+                                <img src="顯微技術.jpeg" alt="[顯微鏡照片]" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                             </div>
                         </div>
                         <!-- 探究與實作 -->
-                        <div class="bg-slate-50 p-7 rounded-2xl border border-slate-100 flex flex-col justify-between">
+                        <div class="bg-slate-50 p-7 rounded-2xl border border-slate-100 flex flex-col justify-between h-full">
                             <div>
                                 <h4 class="font-bold text-slate-950 mb-3 text-2xl tracking-tight">探究與實作</h4>
-                                <p>針對特定生物學議題提出假設，自主設計實驗方案、進行數據統計與分析，並撰寫結構完整的實驗報告。</p>
+                                <p>針對酵母菌發酵議題提出假設，自主設計實驗方案、進行數據統計與分析，並撰寫結構完整的實驗報告。</p>
                             </div>
-                            <div class="mt-6 rounded-xl overflow-hidden aspect-video bg-gray-200 shadow-sm cursor-pointer group" onclick="openModal('https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800')">
-                                <img src="生物探究實作.jpeg" alt="探究與實作示意圖" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="mt-6 rounded-xl overflow-hidden aspect-video bg-gray-200 shadow-sm cursor-pointer group" onclick="openModal('https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1200')">
+                                <img src="生物探究實作.jpeg" alt="[實驗室照片]" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- 化學與物理 -->
                 <div class="grid md:grid-cols-2 gap-12">
-                    <!-- 化學科 -->
                     <div class="bg-white p-14 rounded-3xl card-shadow border border-gray-100 relative overflow-hidden card-hover">
                         <div class="absolute top-0 left-0 w-3 h-full bg-chem"></div>
                         <h3 class="text-4xl font-extrabold mb-8 text-chem flex items-center">
@@ -157,7 +157,6 @@
                         <h4 class="font-bold text-slate-950 mb-3 text-2xl tracking-tight">探究與實作</h4>
                         <p class="text-slate-700 text-lg leading-relaxed">實驗室中的物質分析、化學反應速率控制，學習運用標準分析儀器進行定性與定量研究，深化對物質變化的理解。</p>
                     </div>
-                    <!-- 物理科 -->
                     <div class="bg-white p-14 rounded-3xl card-shadow border border-gray-100 relative overflow-hidden card-hover">
                         <div class="absolute top-0 left-0 w-3 h-full bg-phys"></div>
                         <h3 class="text-4xl font-extrabold mb-8 text-phys flex items-center">
@@ -184,7 +183,7 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12">
-                <!-- 競賽項目 1 -->
+                <!-- 生奧 -->
                 <div class="overflow-hidden rounded-3xl shadow-xl aspect-video relative group bg-white p-2.5 border border-gray-100 cursor-pointer" onclick="openModal('生奧.jpg')">
                     <img src="生奧.jpg" alt="生物奧林匹亞" class="w-full h-full object-cover rounded-2xl transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute bottom-7 left-7 right-7 p-7 text-white bg-black/70 backdrop-blur-lg rounded-2xl shadow-inner">
@@ -194,7 +193,7 @@
                     </div>
                 </div>
 
-                <!-- 競賽項目 2 -->
+                <!-- 化奧 -->
                 <div class="overflow-hidden rounded-3xl shadow-xl aspect-video relative group bg-white p-2.5 border border-gray-100 cursor-pointer" onclick="openModal('化奧.jpg')">
                     <img src="化奧.jpg" alt="化學奧林匹亞" class="w-full h-full object-cover rounded-2xl transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute bottom-7 left-7 right-7 p-7 text-white bg-black/70 backdrop-blur-lg rounded-2xl shadow-inner">
@@ -205,7 +204,7 @@
                 </div>
 
                 <div class="md:col-span-2 grid md:grid-cols-2 gap-12 pt-4">
-                    <!-- 競賽項目 3 -->
+                    <!-- AMC 12 -->
                     <div class="overflow-hidden rounded-3xl shadow-xl aspect-video relative group bg-white p-2.5 border border-gray-100 cursor-pointer" onclick="openModal('excellent.jpg')">
                         <img src="excellent.jpg" alt="AMC 12" class="w-full h-full object-cover rounded-2xl transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute bottom-7 left-7 right-7 p-7 text-white bg-black/70 backdrop-blur-lg rounded-2xl shadow-inner">
@@ -214,7 +213,7 @@
                             <p class="mt-2.5 text-xl text-gray-100">Achievement: Excellent</p>
                         </div>
                     </div>
-                    <!-- 競賽項目 4 -->
+                    <!-- AIME -->
                     <div class="overflow-hidden rounded-3xl shadow-xl aspect-video relative group bg-white p-2.5 border border-gray-100 cursor-pointer" onclick="openModal('aime.jpeg')">
                         <img src="aime.jpeg" alt="AIME" class="w-full h-full object-cover rounded-2xl transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute bottom-7 left-7 right-7 p-7 text-white bg-black/70 backdrop-blur-lg rounded-2xl shadow-inner">
@@ -225,7 +224,7 @@
                     </div>
                 </div>
 
-                <!-- 競賽項目 5 -->
+                <!-- APX 物理 -->
                 <div class="overflow-hidden rounded-3xl shadow-xl aspect-video relative group bg-white p-2.5 border border-gray-100 md:col-span-2 lg:col-span-1 lg:col-start-1 lg:col-end-2 cursor-pointer" onclick="openModal('apx 物理中高級前5%.jpg')">
                     <img src="apx 物理中高級前5%.jpg" class="object-cover w-full h-full rounded-2xl transition-transform duration-700 group-hover:scale-110" alt="APX 物理">
                     <div class="absolute bottom-7 left-7 right-7 p-7 text-white bg-black/70 backdrop-blur-lg rounded-2xl shadow-inner">
@@ -238,9 +237,8 @@
         </div>
     </section>
 
+    <!-- 興趣專長區塊 -->
     <main class="max-w-7xl mx-auto px-8 relative z-10">
-        
-        <!-- 興趣與專長區塊 -->
         <section id="interests">
             <div class="mb-16 text-center">
                 <h2 class="text-6xl font-black text-slate-950 tracking-tighter">個人興趣與專長</h2>
@@ -248,37 +246,35 @@
             </div>
             
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-                <!-- 鋼琴 -->
+                <!-- 鋼琴區 -->
                 <div class="lg:col-span-5 bg-white p-12 rounded-3xl card-shadow border border-gray-100 space-y-7 card-hover">
                     <h3 class="text-3xl font-extrabold text-slate-950 flex items-center">
                         <svg class="w-9 h-9 mr-3 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg>
                         鋼琴演奏
                     </h3>
-                    <p class="text-xl text-slate-700 leading-relaxed bg-slate-50 p-6 rounded-2xl border border-slate-100">音樂是我心靈的棲地。透過十幾年的鋼琴學習，我於無數次反覆練習中磨練細節的極致追求，並學會如何在專注中釋放情感，提升了藝術涵養與毅力。</p>
-                    <div class="rounded-2xl overflow-hidden aspect-[4/3] bg-gray-100 shadow-md ring-4 ring-gray-50 transition-transform duration-500 hover:scale-105">
+                    <p class="text-xl text-slate-700 leading-relaxed bg-slate-50 p-6 rounded-2xl border border-slate-100">音樂是我心靈的棲地。透過十幾年的鋼琴學習，我於無數次反覆練習中磨練細節的極致追求，並學會如何在專注中釋放情感。</p>
+                    <div class="rounded-2xl overflow-hidden aspect-[4/3] bg-gray-100 shadow-md ring-4 ring-gray-50 transition-transform duration-500 hover:scale-105 cursor-pointer" onclick="openModal('鋼琴檢定.png')">
                         <img src="鋼琴檢定.png" class="object-cover w-full h-full" alt="鋼琴">
                     </div>
                 </div>
-
-                <!-- 籃球 (固定比例) -->
+                <!-- 籃球區 (設定要求比例 4024*6048 直向) -->
                 <div class="lg:col-span-7 bg-white p-12 rounded-3xl card-shadow border border-gray-100 space-y-7 card-hover">
                     <h3 class="text-3xl font-extrabold text-slate-950 flex items-center justify-end">
                         <svg class="w-9 h-9 mr-3 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 002 2h1.5A2.5 2.5 0 0019 9.5V8a2 2 0 00-2-2h-1a2 2 0 01-2-2v-.935M12 21a9 9 0 110-18 9 9 0 010 18z"></path></svg>
                         籃球比賽
                     </h3>
-                    <p class="text-xl text-slate-700 leading-relaxed text-right bg-slate-50 p-6 rounded-2xl border border-slate-100 transition-all hover:border-orange-100 hover:bg-orange-50">身為籃球隊隊長，場上的戰術跑位、瞬息萬變的決策，以及與隊友間的默契配合，教會我如何在高壓下保持冷靜，並深刻體會到「團隊合作力量大」的真諦，鍛鍊出強健體魄與領導潛質。</p>
+                    <p class="text-xl text-slate-700 leading-relaxed text-right bg-slate-50 p-6 rounded-2xl border border-slate-100 transition-all hover:border-orange-100 hover:bg-orange-50">籃球教會我如何在高壓下保持冷靜，並深刻體會團隊合作的力量。</p>
                     <div class="grid md:grid-cols-2 gap-7 pt-4">
-                        <div class="rounded-2xl overflow-hidden aspect-basketball bg-gray-100 shadow-md ring-4 ring-gray-50 transition-transform duration-500 hover:scale-105">
-                            <img src="籃球(2).JPEG" alt="籃球比賽 1">
+                        <div class="rounded-2xl overflow-hidden aspect-basketball bg-gray-100 shadow-md ring-4 ring-gray-50 transition-transform duration-500 hover:scale-105 cursor-pointer" onclick="openModal('https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=4024&h=6048')">
+                            <img src="籃球(2).JPEG" class="object-cover w-full h-full" alt="籃球 1">
                         </div>
-                        <div class="rounded-2xl overflow-hidden aspect-basketball bg-gray-100 shadow-md ring-4 ring-gray-50 transition-transform duration-500 hover:scale-105">
-                            <img src="籃球(1).JPEG" alt="籃球比賽 2">
+                        <div class="rounded-2xl overflow-hidden aspect-basketball bg-gray-100 shadow-md ring-4 ring-gray-50 transition-transform duration-500 hover:scale-105 cursor-pointer" onclick="openModal('https://images.unsplash.com/photo-1519861531153-f351f0a4821a?auto=format&fit=crop&w=4024&h=6048')">
+                            <img src="籃球(1).JPEG" class="object-cover w-full h-full" alt="籃球 2">
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
     </main>
 
     <!-- 頁尾 -->
@@ -290,21 +286,18 @@
                  呂運和的個人學習檔案
             </p>
             <p class="mt-4 text-lg font-medium">&copy; 2026 呂運和. All Rights Reserved.</p>
-            <p class="text-sm mt-1 opacity-70">Design with Tailwind CSS & Fine Articulation</p>
         </div>
     </footer>
 
-    <!-- 圖片瀏覽燈箱 (Modal) -->
-    <div id="imageModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 cursor-zoom-out" onclick="closeModal()">
+    <!-- 燈箱 Modal -->
+    <div id="imageModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md p-4 cursor-zoom-out" onclick="closeModal()">
         <button class="absolute top-8 right-8 text-white hover:text-blue-400 transition-colors p-2" onclick="closeModal()">
-            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
         <div class="max-w-5xl max-h-[90vh] relative" onclick="event.stopPropagation()">
-            <img id="modalImage" src="" class="max-w-full max-h-[90vh] rounded-lg shadow-2xl border-4 border-white/10" alt="全螢幕瀏覽">
+            <img id="modalImage" src="" class="max-w-full max-h-[90vh] rounded-lg shadow-2xl border-2 border-white/20" alt="放大圖">
         </div>
-        <div class="absolute bottom-8 text-white/50 text-sm font-medium tracking-widest">點擊背景即可關閉</div>
+        <div class="absolute bottom-8 text-white/50 text-sm font-medium tracking-widest uppercase">點擊背景即可關閉</div>
     </div>
 
     <script>
@@ -312,14 +305,10 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                const target = document.querySelector(targetId);
+                const target = document.querySelector(this.getAttribute('href'));
                 const navHeight = 80; 
-                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
-
                 window.scrollTo({
-                    top: targetPosition,
+                    top: target.getBoundingClientRect().top + window.pageYOffset - navHeight,
                     behavior: 'smooth'
                 });
             });
@@ -327,27 +316,4 @@
 
         // 燈箱控制邏輯
         const modal = document.getElementById('imageModal');
-        const modalImg = document.getElementById('modalImage');
-
-        function openModal(src) {
-            modalImg.src = src;
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // 禁止背景捲動
-        }
-
-        function closeModal() {
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto'; // 恢復背景捲動
-            setTimeout(() => {
-                modalImg.src = ""; // 動畫結束後清空來源
-            }, 300);
-        }
-
-        // 支援 Esc 鍵關閉
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
-        });
-    </script>
-
-</body>
-</html>
+        const
